@@ -248,3 +248,15 @@ This validator script is designed to monitor the guild status of a given produce
    wax_validation_test_seed_status{instance="",job="wax_validation"} 1
    ``` 
 
+
+
+<br>
+<br>
+
+
+| Planned Improvements | Aimed date |
+|------------------|----------------|
+| Screenshot toggle on event | 2024-10-17 |
+| Improve config customization | 2024-02-11 |
+| Host prometheus online | Not yet defined |
+
