@@ -141,6 +141,7 @@ This validator script is designed to monitor the status of various blockchain se
    [ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)</br>  
    [ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)</br>   
    [Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)</br>
+   [Prometheus Monitor Example](assets/screenshot-monitor-view.png)</br>
 
    
    > *You can handle the screenshots in the bind mount of the docker compose any way you want and use it for either telegram alerting or e-mail*
