@@ -145,6 +145,13 @@ This validator script is designed to monitor the guild status of a given produce
    
    > *You can handle the screenshots in the bind mount of the docker compose any way you want and use it for either telegram alerting or e-mail*
 
+   Some failures:
+   <br>[LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T18-18-52-181Z.png)</br>
+   <br>[LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T18-18-47-829Z.png)</br>   
+   <br>[ValidationCore TestNet](assets/test-validationcore-2024-10-13T18-19-44-212Z.png)</br>  
+   <br>[ValidationCore MainNet](assets/main-validationcore-2024-10-13T18-19-21-596Z.png)</br>   
+   <br>[Sengine](assets/sengine-sentnl-2024-10-13T18-19-53-841Z.png)</br> 
+
 3. Exposed metrics by pushgateway (you can configure grafana alerting on these you want to monitor)
    ```bash
    # TYPE wax_node_aa_api_status untyped
