@@ -9,11 +9,11 @@ services:
       
     environment:
       - NODE_ENV=production
-      - GUILD_SITE_SENTNL=https://wax.sengine.co/guilds/3dkrenderwax
-      - GUILD_SITE_LEDGERWISE_TESTNET=https://nodestatus.ledgerwise.io/wax-test/producer/3dkrenderwax
-      - GUILD_SITE_LEDGERWISE_MAINNET=https://nodestatus.ledgerwise.io/wax/producer/3dkrenderwax
-      - GUILD_SITE_VALIDATIONCORE_TESTNET=https://wax-test.validationcore.io/validations/3dkrenderwax
-      - GUILD_SITE_VALIDATIONCORE_MAINNET=https://wax.validationcore.io/validations/3dkrenderwax
+      - GUILD_SITE_SENTNL=https://wax.sengine.co/guilds/oneinacilian
+      - GUILD_SITE_LEDGERWISE_TESTNET=https://nodestatus.ledgerwise.io/wax-test/producer/oneinacilian
+      - GUILD_SITE_LEDGERWISE_MAINNET=https://nodestatus.ledgerwise.io/wax/producer/oneinacilian
+      - GUILD_SITE_VALIDATIONCORE_TESTNET=https://wax-test.validationcore.io/validations/oneinacilian
+      - GUILD_SITE_VALIDATIONCORE_MAINNET=https://wax.validationcore.io/validations/oneinacilian
       - LEDGERWISE_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_node_status
       - SENTNL_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_sengine
       - VALIDATIONCORE_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_validation
