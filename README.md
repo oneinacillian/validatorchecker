@@ -1,6 +1,6 @@
 # Validator Script
 
-This validator script is designed to monitor the status of various blockchain services for WAX nodes. It periodically checks specific endpoints for the availability and health of services such as Chain API, History V1, Hyperion, AA API, IPFS, Light API, Github, Seed, and `bp.json`.
+This validator script is designed to monitor the guild status of a given producer, listed on either of the following validators (Sengine, ValidationCore, LedgerWise) . It periodically checks if any service is either healthy or impaired according to their checks.
 
 ## Features
 
@@ -8,7 +8,7 @@ This validator script is designed to monitor the status of various blockchain se
   
 - **Metrics Export**: The health statuses are converted into Prometheus metrics. These metrics are then pushed to a Prometheus Pushgateway, allowing you to monitor the health of the services in your Prometheus monitoring setup.
 
-- **Screenshot Capture**: After each check with a failure, the script takes a screenshot of the page (full page) and saves it with a timestamp in `/var/log/validator`. This provides a visual log of the state of the services at each monitoring interval.
+- **Screenshot Capture**: After each check with a failure, the script takes a screenshot of the page (full page) and saves it with a timestamp in `/var/log/validator` **more below on the configuration**. This provides a visual log of the state of the services at each monitoring interval.
 
 ## How It Works
 
