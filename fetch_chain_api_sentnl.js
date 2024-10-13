@@ -1,6 +1,9 @@
 const puppeteer = require('puppeteer');
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 const apiUrl = process.env.GUILD_SITE_SENTNL;
+const pushgateway = process.env.SENTNL_PUSHGATEWAY;
 
 console.log("API URL:", apiUrl);  // Check if API_URL is correctly passed
 
@@ -8,8 +11,12 @@ if (!apiUrl) {
   throw new Error("API_URL environment variable is missing");
 }
 
+if (!pushgateway) {
+    throw new Error("API_URL environment variable is missing");
+}
+
 (async () => {
-    const PUSHGATEWAY_URL = "http://172.168.40.200:9091/metrics/job/wax_sengine";
+    const PUSHGATEWAY_URL = pushgateway;
 
     // Launch a headless browser with the necessary flags
     const browser = await puppeteer.launch({
@@ -78,6 +85,18 @@ wax_sengine_${siteLabel}_wwwjson_status ${getStatusValue(wwwjsonStatus)}
         } catch (error) {
             console.error(`Failed to send metrics for ${siteLabel}: ${error.message}`);
         }
+
+        // Take a screenshot and save it with a timestamp in /var/log/validator
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // Format the timestamp
+        // // const screenshotPath = `/var/log/validator/${siteLabel}-${timestamp}.png`;
+        const screenshotPath = `/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots/${siteLabel}-sentnl-${timestamp}.png`;
+
+        try {
+            await page.screenshot({ path: screenshotPath, fullPage: true });  // Capture the entire page
+            console.log(`Screenshot for ${siteLabel} saved at ${screenshotPath}`);
+        } catch (error) {
+            console.error(`Failed to take full-page screenshot for ${siteLabel}: ${error.message}`);
+        }             
 
         await page.close();
     };
