@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  checkvalidator:
+    build: .
+    container_name: checkvalidator
+    volumes:
+      - /var/log/validator:/var/log/validator  # To persist log files on the host
+    environment:
+      - NODE_ENV=production
+      - GUILD_SITE_SENTNL=https://wax.sengine.co/guilds/oneinacilian
+      - GUILD_SITE_LEDGERWISE_TESTNET=https://nodestatus.ledgerwise.io/wax-test/producer/oneinacilian
+      - GUILD_SITE_LEDGERWISE_MAINNET=https://nodestatus.ledgerwise.io/wax/producer/oneinacilian
+      - GUILD_SITE_VALIDATIONCORE_TESTNET=https://wax-test.validationcore.io/validations/oneinacilian
+      - GUILD_SITE_VALIDATIONCORE_MAINNET=https://wax.validationcore.io/validations/oneinacilian
+    restart: always
