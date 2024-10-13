@@ -136,13 +136,14 @@ This validator script is designed to monitor the status of various blockchain se
    ```
 
 2. Some screenshots:
-   [LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T16-34-24-011Z.png)
-   [LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T16-34-19-659Z.png)   
-   [ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)  
-   [ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)   
-   [Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)
+   [LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T16-34-24-011Z.png)</br>
+   [LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T16-34-19-659Z.png)</br>   
+   [ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)</br>  
+   [ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)</br>   
+   [Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)</br>
 
-   *You can handle the screenshots in the bind mount of the docker compose any way you want and use it for either telegram alerting or e-mail*    
+   
+   > *You can handle the screenshots in the bind mount of the docker compose any way you want and use it for either telegram alerting or e-mail*
 
 3. Exposed metrics by pushgateway (you can configure grafana alerting on these you want to monitor)
    ```bash
