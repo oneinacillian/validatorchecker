@@ -5,6 +5,7 @@ const path = require('path');
 const apiUrl = process.env.GUILD_SITE_SENTNL;
 const pushgateway = process.env.SENTNL_PUSHGATEWAY;
 const screenshot = process.env.SENTNL_ENABLE_SCREENSHOT === 'true';
+const screenshotDir = process.env.SCREENSHOT_PATH || '/tmp';  // Fallback if env var is not set
 
 console.log("API URL:", apiUrl);  // Check if API_URL is correctly passed
 
@@ -92,7 +93,7 @@ wax_sengine_${siteLabel}_wwwjson_status ${getStatusValue(wwwjsonStatus)}
             // Take a screenshot and save it with a timestamp in /var/log/validator
             const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // Format the timestamp
             // // const screenshotPath = `/var/log/validator/${siteLabel}-${timestamp}.png`;
-            const screenshotPath = `/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots/${siteLabel}-sentnl-${timestamp}.png`;
+            const screenshotPath = `${screenshotDir}/${siteLabel}-sentnl-${timestamp}.png`;
 
             try {
                 await page.screenshot({ path: screenshotPath, fullPage: true });  // Capture the entire page

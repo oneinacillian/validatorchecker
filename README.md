@@ -58,6 +58,10 @@ This validator script is designed to monitor the status of various blockchain se
    - SENTNL_ENABLE_SCREENSHOT=false
    - LEDGERWISE_ENABLE_SCREENSHOT=false   
    ```
+   Screenshot path environment (if you want to map it to your host, remember the host binding)
+   ```bash
+   - SCREENSHOT_PATH=/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots
+   ```
 
 5. Build and run validator for sengine, validationcore and ledgerwise
    ```bash
@@ -132,9 +136,107 @@ This validator script is designed to monitor the status of various blockchain se
    ```
 
 2. Some screenshots:
-   ![LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T16-34-24-011Z.png)
-   ![LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T16-34-19-659Z.png)   
-   ![ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)  
-   ![ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)   
-   ![Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)  
+   [LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T16-34-24-011Z.png)
+   [LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T16-34-19-659Z.png)   
+   [ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)  
+   [ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)   
+   [Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)
+
+   *You can handle the screenshots in the bind mount of the docker compose any way you want and use it for either telegram alerting or e-mail*    
+
+3. Exposed metrics by pushgateway (you can configure grafana alerting on these you want to monitor)
+   ```bash
+   # TYPE wax_node_aa_api_status untyped
+   wax_node_aa_api_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_bp_json_status untyped
+   wax_node_bp_json_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_chain_api_status untyped
+   wax_node_chain_api_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_github_status untyped
+   wax_node_github_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_history_v1_status untyped
+   wax_node_history_v1_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_hyperion_status untyped
+   wax_node_hyperion_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_ipfs_status untyped
+   wax_node_ipfs_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_light_api_status untyped
+   wax_node_light_api_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_aa_api_status untyped
+   wax_node_main_aa_api_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_bp_json_status untyped
+   wax_node_main_bp_json_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_chain_api_status untyped
+   wax_node_main_chain_api_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_github_status untyped
+   wax_node_main_github_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_history_v1_status untyped
+   wax_node_main_history_v1_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_hyperion_status untyped
+   wax_node_main_hyperion_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_ipfs_status untyped
+   wax_node_main_ipfs_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_light_api_status untyped
+   wax_node_main_light_api_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_main_seed_status untyped
+   wax_node_main_seed_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_seed_status untyped
+   wax_node_seed_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_test_aa_api_status untyped
+   wax_node_test_aa_api_status{instance="",job="wax_node_status"} 0
+   # TYPE wax_node_test_bp_json_status untyped
+   wax_node_test_bp_json_status{instance="",job="wax_node_status"} 0
+   # TYPE wax_node_test_chain_api_status untyped
+   wax_node_test_chain_api_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_test_github_status untyped
+   wax_node_test_github_status{instance="",job="wax_node_status"} 0
+   # TYPE wax_node_test_history_v1_status untyped
+   wax_node_test_history_v1_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_test_hyperion_status untyped
+   wax_node_test_hyperion_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_node_test_ipfs_status untyped
+   wax_node_test_ipfs_status{instance="",job="wax_node_status"} 0
+   # TYPE wax_node_test_light_api_status untyped
+   wax_node_test_light_api_status{instance="",job="wax_node_status"} 0
+   # TYPE wax_node_test_seed_status untyped
+   wax_node_test_seed_status{instance="",job="wax_node_status"} 1
+   # TYPE wax_sengine_sengine_atomic_api_status untyped
+   wax_sengine_sengine_atomic_api_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_cors_check_status untyped
+   wax_sengine_sengine_cors_check_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_history_v1_status untyped
+   wax_sengine_sengine_history_v1_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_hyperion_testnet_full_status untyped
+   wax_sengine_sengine_hyperion_testnet_full_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_hyperion_testnet_status untyped
+   wax_sengine_sengine_hyperion_testnet_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_hyperion_v2_full_status untyped
+   wax_sengine_sengine_hyperion_v2_full_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_hyperion_v2_status untyped
+   wax_sengine_sengine_hyperion_v2_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_oracle_feed_status untyped
+   wax_sengine_sengine_oracle_feed_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_sengine_sengine_wwwjson_status untyped
+   wax_sengine_sengine_wwwjson_status{instance="",job="wax_sengine"} 1
+   # TYPE wax_validation_main_api_status untyped
+   wax_validation_main_api_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_main_atomic_status untyped
+   wax_validation_main_atomic_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_main_history_status untyped
+   wax_validation_main_history_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_main_hyperion_status untyped
+   wax_validation_main_hyperion_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_main_seed_status untyped
+   wax_validation_main_seed_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_test_api_status untyped
+   wax_validation_test_api_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_test_atomic_status untyped
+   wax_validation_test_atomic_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_test_history_status untyped
+   wax_validation_test_history_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_test_hyperion_status untyped
+   wax_validation_test_hyperion_status{instance="",job="wax_validation"} 1
+   # TYPE wax_validation_test_seed_status untyped
+   wax_validation_test_seed_status{instance="",job="wax_validation"} 1
+   ``` 
 

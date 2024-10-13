@@ -5,7 +5,8 @@ services:
     container_name: checkvalidator
     volumes:
       - /var/log/validator:/var/log/validator  # To persist log files on the host
-      - /root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots:/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots
+      - /root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots:/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots #used for testing
+      
     environment:
       - NODE_ENV=production
       - GUILD_SITE_SENTNL=https://wax.sengine.co/guilds/oneinacilian
@@ -19,4 +20,5 @@ services:
       - VALIDATIONCORE_ENABLE_SCREENSHOT=true
       - SENTNL_ENABLE_SCREENSHOT=true
       - LEDGERWISE_ENABLE_SCREENSHOT=true
+      - SCREENSHOT_PATH=/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots
     restart: always

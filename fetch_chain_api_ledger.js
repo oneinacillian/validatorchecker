@@ -6,6 +6,7 @@ const apiUrl_test = process.env.GUILD_SITE_LEDGERWISE_TESTNET;
 const apiUrl_main = process.env.GUILD_SITE_LEDGERWISE_MAINNET;
 const pushgateway = process.env.LEDGERWISE_PUSHGATEWAY;
 const screenshot = process.env.LEDGERWISE_ENABLE_SCREENSHOT === 'true';
+const screenshotDir = process.env.SCREENSHOT_PATH || '/tmp';  // Fallback if env var is not set
 
 console.log("API URL:", apiUrl_test);  // Check if API_URL is correctly passed
 console.log("API URL:", apiUrl_main);  // Check if API_URL is correctly passed
@@ -142,7 +143,7 @@ wax_node_${siteLabel}_bp_json_status ${getStatusValue(values.bpJsonValue)}
             // Take a screenshot and save it with a timestamp in /var/log/validator
             const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // Format the timestamp
             // // const screenshotPath = `/var/log/validator/${siteLabel}-${timestamp}.png`;
-            const screenshotPath = `/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots/${siteLabel}-ledgerwise-${timestamp}.png`;
+            const screenshotPath = `${screenshotDir}/${siteLabel}-ledgerwise-${timestamp}.png`;
 
             try {
                 await page.screenshot({ path: screenshotPath, fullPage: true });  // Capture the entire page
