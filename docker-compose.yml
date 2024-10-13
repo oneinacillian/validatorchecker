@@ -16,4 +16,7 @@ services:
       - LEDGERWISE_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_node_status
       - SENTNL_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_sengine
       - VALIDATIONCORE_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_validation
+      - VALIDATIONCORE_ENABLE_SCREENSHOT=true
+      - SENTNL_ENABLE_SCREENSHOT=true
+      - LEDGERWISE_ENABLE_SCREENSHOT=true
     restart: always

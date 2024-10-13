@@ -5,6 +5,7 @@ const path = require('path');
 const apiUrl_test = process.env.GUILD_SITE_VALIDATIONCORE_TESTNET;
 const apiUrl_main = process.env.GUILD_SITE_VALIDATIONCORE_MAINNET;
 const pushgateway = process.env.VALIDATIONCORE_PUSHGATEWAY;
+const screenshot = process.env.VALIDATIONCORE_ENABLE_SCREENSHOT === 'true';
 
 console.log("API URL:", apiUrl_test);  // Check if API_URL is correctly passed
 console.log("API URL:", apiUrl_main);  // Check if API_URL is correctly passed
@@ -86,17 +87,20 @@ wax_validation_${siteLabel}_api_status ${getStatusValue(apiStatus)}
             console.error(`Failed to send metrics for ${siteLabel}: ${error.message}`);
         }
 
-        // Take a screenshot and save it with a timestamp in /var/log/validator
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // Format the timestamp
-        // // const screenshotPath = `/var/log/validator/${siteLabel}-${timestamp}.png`;
-        const screenshotPath = `/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots/${siteLabel}-validationcore-${timestamp}.png`;
+        if (screenshot) {
 
-        try {
-            await page.screenshot({ path: screenshotPath, fullPage: true });  // Capture the entire page
-            console.log(`Screenshot for ${siteLabel} saved at ${screenshotPath}`);
-        } catch (error) {
-            console.error(`Failed to take full-page screenshot for ${siteLabel}: ${error.message}`);
-        }             
+            // Take a screenshot and save it with a timestamp in /var/log/validator
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // Format the timestamp
+            // // const screenshotPath = `/var/log/validator/${siteLabel}-${timestamp}.png`;
+            const screenshotPath = `/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots/${siteLabel}-validationcore-${timestamp}.png`;
+
+            try {
+                await page.screenshot({ path: screenshotPath, fullPage: true });  // Capture the entire page
+                console.log(`Screenshot for ${siteLabel} saved at ${screenshotPath}`);
+            } catch (error) {
+                console.error(`Failed to take full-page screenshot for ${siteLabel}: ${error.message}`);
+            }
+        }               
 
         await page.close();
     };

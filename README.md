@@ -44,16 +44,97 @@ This validator script is designed to monitor the status of various blockchain se
     - GUILD_SITE_VALIDATIONCORE_MAINNET=https://wax.validationcore.io/validations/oneinacilian
     - LEDGERWISE_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_node_status
     - SENTNL_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_sengine
-    - VALIDATIONCORE_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_validation
+    - VALIDATIONCORE_PUSHGATEWAY=http://172.168.40.200:9091/metrics/job/wax_validation 
 
 4. Optional - Bind your log and screenshot directory
    ```bash
     volumes:
       - /var/log/validator:/var/log/validator  # To persist log files on the host
       - /root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots:/root/githubtest/websiteinterrogate/composedeploy/validatorchecker/screenshots 
+   ```
+   Environment variables used to switch screenshotting on/off
+   ```bash
+   - VALIDATIONCORE_ENABLE_SCREENSHOT=false
+   - SENTNL_ENABLE_SCREENSHOT=false
+   - LEDGERWISE_ENABLE_SCREENSHOT=false   
+   ```
 
 5. Build and run validator for sengine, validationcore and ledgerwise
    ```bash
     docker-compose up --build -d
- 
+   ``` 
+
+
+ ## Examples
+
+1. Log files created but validator app
+   ```bash
+   ls /var/log/validator/
+   ledger_cron.log  sentnl_cron.log  validationcore_cron.log
+   ```
+   ```bash
+    cat /var/log/validator/ledger_cron.log 
+    Running fetch_chain_api_ledger.js at Sun Oct 13 15:21:01 UTC 2024
+    API URL: https://nodestatus.ledgerwise.io/wax-test/producer/oneinacilian
+    API URL: https://nodestatus.ledgerwise.io/wax/producer/oneinacilian
+    API URL: http://172.168.40.200:9091/metrics/job/wax_node_status
+    Metrics for main successfully sent to Pushgateway.
+    Metrics for test successfully sent to Pushgateway.
+    Running fetch_chain_api_ledger.js at Sun Oct 13 15:23:06 UTC 2024
+    API URL: https://nodestatus.ledgerwise.io/wax-test/producer/oneinacilian
+    API URL: https://nodestatus.ledgerwise.io/wax/producer/oneinacilian
+    API URL: http://172.168.40.200:9091/metrics/job/wax_node_status
+    Metrics for main successfully sent to Pushgateway.
+    Metrics for test successfully sent to Pushgateway.
+    Running fetch_chain_api_ledger.js at Sun Oct 13 15:25:46 UTC 2024
+    API URL: https://nodestatus.ledgerwise.io/wax-test/producer/oneinacilian
+    API URL: https://nodestatus.ledgerwise.io/wax/producer/oneinacilian
+    API URL: http://172.168.40.200:9091/metrics/job/wax_node_status
+    Metrics for main successfully sent to Pushgateway.
+    Metrics for test successfully sent to Pushgateway.
+   ```
+   ```bash
+    cat /var/log/validator/sentnl_cron.log 
+    Running fetch_chain_api_sentnl.js at Sun Oct 13 15:21:59 UTC 2024
+    API URL: https://wax.sengine.co/guilds/oneinacilian
+    Metrics for sengine successfully sent to Pushgateway.
+    Running fetch_chain_api_sentnl.js at Sun Oct 13 15:24:39 UTC 2024
+    API URL: https://wax.sengine.co/guilds/oneinacilian
+    Metrics for sengine successfully sent to Pushgateway.
+    Running fetch_chain_api_sentnl.js at Sun Oct 13 15:26:45 UTC 2024
+    API URL: https://wax.sengine.co/guilds/oneinacilian
+    Metrics for sengine successfully sent to Pushgateway.
+   ```
+   ```bash
+    Running fetch_chain_api_validationcore.js at Sun Oct 13 15:35:02 UTC 2024
+    API URL: https://wax-test.validationcore.io/validations/oneinacilian
+    API URL: https://wax.validationcore.io/validations/oneinacilian
+    Metrics for main successfully sent to Pushgateway.
+    Metrics for test successfully sent to Pushgateway.
+    Running fetch_chain_api_validationcore.js at Sun Oct 13 15:37:07 UTC 2024
+    API URL: https://wax-test.validationcore.io/validations/oneinacilian
+    API URL: https://wax.validationcore.io/validations/oneinacilian
+    Metrics for main successfully sent to Pushgateway.
+    Metrics for test successfully sent to Pushgateway.
+    Running fetch_chain_api_validationcore.js at Sun Oct 13 15:39:26 UTC 2024
+    API URL: https://wax-test.validationcore.io/validations/oneinacilian
+    API URL: https://wax.validationcore.io/validations/oneinacilian
+    Metrics for main successfully sent to Pushgateway.
+    Metrics for test successfully sent to Pushgateway.
+    Running fetch_chain_api_validationcore.js at Sun Oct 13 15:41:40 UTC 2024
+    API URL: https://wax-test.validationcore.io/validations/oneinacilian
+    API URL: https://wax.validationcore.io/validations/oneinacilian
+    Metrics for main successfully sent to Pushgateway.
+    Metrics for test successfully sent to Pushgateway.
+    Running fetch_chain_api_validationcore.js at Sun Oct 13 15:43:45 UTC 2024
+    API URL: https://wax-test.validationcore.io/validations/oneinacilian
+    API URL: https://wax.validationcore.io/validations/oneinacilian
+   ```
+
+2. Some screenshots:
+   ![LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T16-34-24-011Z.png)
+   ![LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T16-34-19-659Z.png)   
+   ![ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)  
+   ![ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)   
+   ![Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)  
 
