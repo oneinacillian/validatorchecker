@@ -29,13 +29,13 @@ This validator script is designed to monitor the guild status of a given produce
 ## Setup
 
 1. Ensure you have Docker and Docker Compose installed.
-2. For monitoring, ensure you have prometheus configured, with a prometheus gateway to push metrics too. (In your **prometheus.yml**, set the following for example)
+2. For monitoring, ensure you have prometheus configured, with a prometheus gateway to push metrics too. (In your **prometheus.yml**, set the following for example:)
    ```bash
     - job_name: 'pushgateway'
         static_configs:
         - targets: ['172.168.40.200:9091']
 
-3. Ensure that you environment variables has been defined right for your 3 validators
+3. Ensure that your environment variables have been defined correctly for your 3 validators
    ```bash
     - GUILD_SITE_SENTNL=https://wax.sengine.co/guilds/oneinacilian
     - GUILD_SITE_LEDGERWISE_TESTNET=https://nodestatus.ledgerwise.io/wax-test/producer/oneinacilian
@@ -136,13 +136,12 @@ This validator script is designed to monitor the guild status of a given produce
    ```
 
 2. Some screenshots:
-   [LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T16-34-24-011Z.png)</br>
-   [LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T16-34-19-659Z.png)</br>   
-   [ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)</br>  
-   [ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)</br>   
-   [Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)</br>
-   [Prometheus Monitor Example](assets/screenshot-monitor-view.png)</br>
-
+   <br>[LedgerWise TestNet](assets/test-ledgerwise-2024-10-13T16-34-24-011Z.png)</br>
+   <br>[LedgerWise MainNet](assets/main-ledgerwise-2024-10-13T16-34-19-659Z.png)</br>   
+   <br>[ValidationCore TestNet](assets/test-validationcore-2024-10-13T16-35-03-985Z.png)</br>  
+   <br>[ValidationCore MainNet](assets/main-validationcore-2024-10-13T16-34-45-878Z.png)</br>   
+   <br>[Sengine](assets/sengine-sentnl-2024-10-13T16-35-12-960Z.png)</br>
+   <br>[Prometheus Monitor Example](assets/screenshot-monitor-view.png)</br>
    
    > *You can handle the screenshots in the bind mount of the docker compose any way you want and use it for either telegram alerting or e-mail*
 
